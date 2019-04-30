@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rogue_like/models/map.dart';
+import 'package:flutter_rogue_like/models/map-tile.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +25,8 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  Map map = new Map();
+
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -64,7 +68,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget _buildGridView(double screenWidth) {
     return Flexible(
       flex: 2,
-      child: GridView.extent(maxCrossAxisExtent: screenWidth / 9, children: []),
+      child: GridView.extent(
+          maxCrossAxisExtent: screenWidth / 9,
+          children: map.mapTiles.map<Widget>((MapTile tile) {
+            return _buildGridTile(tile);
+          }).toList()),
+    );
+  }
+
+  Widget _buildGridTile(MapTile mapTile) {
+    return GridTile(
+      child: Container(
+        color: mapTile.color,
+        child: Icon(mapTile.iconData),
+      ),
     );
   }
 

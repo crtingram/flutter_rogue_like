@@ -31,6 +31,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       body: Column(
         children: <Widget>[
           _buildHpBar(),
+          _buildGridView(screenWidth),
           _buildButtonRow(),
           _buildListView()
         ],
@@ -38,7 +39,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     ));
   }
 
-  _buildHpBar() {
+  Widget _buildHpBar() {
     return Row(
       children: <Widget>[
         Container(
@@ -60,6 +61,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 
+  Widget _buildGridView(double screenWidth) {
+    return Flexible(
+      flex: 2,
+      child: GridView.extent(maxCrossAxisExtent: screenWidth / 9, children: []),
+    );
+  }
+
   Widget _buildButtonRow() {
     return Row(
       children: <Widget>[
@@ -71,21 +79,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ),
         RaisedButton(
-//                onPressed: () => _movePlayer(MapUtil.DIRECTIONS.NORTH),
           child: Icon(
             Icons.arrow_upward,
             color: Colors.black,
           ),
         ),
         RaisedButton(
-//                onPressed: () => _movePlayer(MapUtil.DIRECTIONS.SOUTH),
           child: Icon(
             Icons.arrow_downward,
             color: Colors.black,
           ),
         ),
         RaisedButton(
-//                onPressed: () => _movePlayer(MapUtil.DIRECTIONS.EAST),
           child: Icon(
             Icons.arrow_forward,
             color: Colors.black,
@@ -93,7 +98,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
         Expanded(
           child: RaisedButton(
-//                onPressed: _contextButton,
             child: Icon(
               Icons.face,
               color: Colors.black,

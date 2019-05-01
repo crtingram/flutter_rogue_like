@@ -3,6 +3,7 @@ import 'package:flutter_rogue_like/models/map/map.dart';
 import 'package:flutter_rogue_like/models/map/map-tile.dart';
 import 'package:flutter_rogue_like/models/entities/entity.dart';
 import 'package:flutter_rogue_like/models/map/coordinate.dart';
+import 'package:flutter_rogue_like/models/game/game.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +26,7 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  Map map = new Map();
+  Game game = new Game();
 
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -70,7 +71,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       flex: 2,
       child: GridView.extent(
           maxCrossAxisExtent: screenWidth / 9,
-          children: map.mapTiles.map<Widget>((MapTile tile) {
+          children: game.getMapTiles().map<Widget>((MapTile tile) {
             return _buildGridTile(tile);
           }).toList()),
     );
@@ -121,7 +122,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         RaisedButton(
           onPressed: (() {
             setState(() {
-              map.movePlayer(Coordinate.west());
+              game.movePlayer(Coordinate.west());
             });
           }),
           child: Icon(
@@ -132,7 +133,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         RaisedButton(
           onPressed: (() {
             setState(() {
-              map.movePlayer(Coordinate.north());
+              game.movePlayer(Coordinate.north());
             });
           }),
           child: Icon(
@@ -143,7 +144,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         RaisedButton(
           onPressed: (() {
             setState(() {
-              map.movePlayer(Coordinate.south());
+              game.movePlayer(Coordinate.south());
             });
           }),
           child: Icon(
@@ -154,7 +155,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         RaisedButton(
           onPressed: (() {
             setState(() {
-              map.movePlayer(Coordinate.east());
+              game.movePlayer(Coordinate.east());
             });
           }),
           child: Icon(
@@ -170,7 +171,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             onPressed: (() {
               setState(() {
-                map = new Map();
+                game.updateMapData();
               });
             }),
           ),

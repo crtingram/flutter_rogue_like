@@ -1,4 +1,5 @@
 import './map-tile.dart';
+import 'package:flutter_rogue_like/models/coordinate.dart';
 import 'dart:math' show Random;
 
 class MapData {
@@ -9,12 +10,14 @@ class MapData {
 
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
+        Coordinate coordinate = new Coordinate(x, y);
+
         if (_random.nextInt(100) % 20 == 0) {
-          _mapTiles.add(MapTile.waterTile());
+          _mapTiles.add(MapTile.waterTile(coordinate));
         } else if (_random.nextInt(100) % 4 == 0) {
-          _mapTiles.add(MapTile.forestTile());
+          _mapTiles.add(MapTile.forestTile(coordinate));
         } else {
-          _mapTiles.add(MapTile.grassTile());
+          _mapTiles.add(MapTile.grassTile(coordinate));
         }
       }
     }

@@ -1,17 +1,16 @@
-import './map-tile.dart';
-import './map-data.dart';
-import './entities/entity.dart';
-import './entities/player.dart';
+import 'package:flutter_rogue_like/models/entities/entity.dart';
+import 'package:flutter_rogue_like/models/entities/player.dart';
+import 'package:flutter_rogue_like/models/map-tile.dart';
+import 'package:flutter_rogue_like/models/map-data.dart';
+import 'package:flutter_rogue_like/models/map-tile-type.dart';
 import 'package:flutter_rogue_like/models/coordinate.dart';
 
 class Map {
   static final num width = 9;
   static final num height = 10;
-
   List<MapTile> _mapTiles;
 
   List<MapTile> get mapTiles => _mapTiles;
-
   Player player;
 
   Map() {
@@ -20,17 +19,25 @@ class Map {
     addEntity(player);
   }
 
-  void addEntity(Entity e) {
-    this[e.coordinate].addEntity(e);
-  }
-
   // Just for testing.
   void updateMapData() {
     _mapTiles = MapData().getMapData(width, height);
   }
 
+  void addEntity(Entity e) {
+    this[e.coordinate].addEntity(e);
+  }
+
+  void removeEntity(Entity e) {
+    this[e.coordinate].removeEntity(e);
+  }
+
   bool isValidCoordinate(Coordinate c) {
     return c.x >= 0 && c.x < width && c.y >= 0 && c.y < height;
+  }
+
+  bool isImpassibleTerrain(Coordinate c) {
+    return [MapTileType.rock, MapTileType.water].contains(this[c].mapTileType);
   }
 
   MapTile operator [](Coordinate c) {

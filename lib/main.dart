@@ -10,9 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       home: MyStatefulWidget(),
     );
   }
@@ -84,14 +82,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     num contentsLength = mapTile.contents.length;
 
     double iconSize = contentsLength > 0
-        ? defaultIconSize / (contentsLength + 1)
+        ? defaultIconSize / (contentsLength)
         : defaultIconSize;
 
-    icons.add(Icon(
-      mapTile.iconData,
-      color: mapTile.iconColor,
-      size: iconSize,
-    ));
+    if (mapTile.iconData != null) {
+      icons.add(Icon(
+        mapTile.iconData,
+        color: mapTile.iconColor,
+        size: iconSize,
+      ));
+    }
 
     mapTile.contents.contents.forEach((Entity e) {
       icons.add(Icon(

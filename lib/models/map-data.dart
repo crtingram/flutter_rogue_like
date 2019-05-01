@@ -15,7 +15,7 @@ class MapData {
         if (_random.nextInt(100) % 20 == 0) {
           _mapTiles.add(MapTile.waterTile(coordinate));
         } else if (_random.nextInt(100) % 4 == 0) {
-          _mapTiles.add(MapTile.forestTile(coordinate));
+          _mapTiles.add(MapTile.rockTile(coordinate));
         } else {
           _mapTiles.add(MapTile.grassTile(coordinate));
         }

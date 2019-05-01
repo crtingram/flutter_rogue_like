@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rogue_like/models/map.dart';
 import 'package:flutter_rogue_like/models/map-tile.dart';
+import 'package:flutter_rogue_like/models/entities/entity.dart';
 
 void main() => runApp(MyApp());
 
@@ -77,10 +78,36 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   Widget _buildGridTile(MapTile mapTile) {
+    List<Widget> icons = new List<Widget>();
+
+    double defaultIconSize = 40.0;
+    num contentsLength = mapTile.contents.length;
+
+    double iconSize = contentsLength > 0
+        ? defaultIconSize / (contentsLength + 1)
+        : defaultIconSize;
+
+    icons.add(Icon(
+      mapTile.iconData,
+      color: mapTile.iconColor,
+      size: iconSize,
+    ));
+
+    mapTile.contents.contents.forEach((Entity e) {
+      icons.add(Icon(
+        e.iconData,
+        color: e.color,
+        size: iconSize,
+      ));
+    });
+
     return GridTile(
       child: Container(
         color: mapTile.color,
-        child: Icon(mapTile.iconData),
+        child: GridView.count(
+          crossAxisCount: 2,
+          children: icons,
+        ),
       ),
     );
   }
@@ -119,6 +146,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               Icons.face,
               color: Colors.black,
             ),
+            onPressed: (() {
+              setState(() {
+                map = new Map();
+              });
+            }),
           ),
         ),
       ],

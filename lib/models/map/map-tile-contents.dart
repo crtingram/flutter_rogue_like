@@ -1,4 +1,4 @@
-import './entities/entity.dart';
+import 'package:flutter_rogue_like/models/entities/entity.dart';
 
 class MapTileContents {
   List<Entity> _contents;

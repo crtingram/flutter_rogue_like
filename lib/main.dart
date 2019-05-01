@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rogue_like/models/map.dart';
-import 'package:flutter_rogue_like/models/map-tile.dart';
+import 'package:flutter_rogue_like/models/map/map.dart';
+import 'package:flutter_rogue_like/models/map/map-tile.dart';
 import 'package:flutter_rogue_like/models/entities/entity.dart';
-import 'package:flutter_rogue_like/models/coordinate.dart';
+import 'package:flutter_rogue_like/models/map/coordinate.dart';
 
 void main() => runApp(MyApp());
 

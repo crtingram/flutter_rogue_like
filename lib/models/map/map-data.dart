@@ -1,5 +1,5 @@
-import './map-tile.dart';
-import 'package:flutter_rogue_like/models/coordinate.dart';
+import 'package:flutter_rogue_like/models/map/map-tile.dart';
+import 'package:flutter_rogue_like/models/map/coordinate.dart';
 import 'dart:math' show Random;
 
 class MapData {

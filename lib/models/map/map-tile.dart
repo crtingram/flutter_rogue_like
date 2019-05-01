@@ -1,8 +1,8 @@
-import './map-tile-type.dart';
-import './map-tile-contents.dart';
+import 'package:flutter_rogue_like/models/map/map-tile-type.dart';
+import 'package:flutter_rogue_like/models/map/map-tile-contents.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rogue_like/models/coordinate.dart';
-import './entities/entity.dart';
+import 'package:flutter_rogue_like/models/map/coordinate.dart';
+import 'package:flutter_rogue_like/models/entities/entity.dart';
 
 class MapTile {
   Coordinate coordinate;

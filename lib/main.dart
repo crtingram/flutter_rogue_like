@@ -109,6 +109,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child: Container(
         color: mapTile.color,
         child: GridView.count(
+          shrinkWrap: true,
+          primary: true,
           crossAxisCount: 2,
           children: icons,
         ),

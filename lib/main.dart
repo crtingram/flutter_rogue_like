@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rogue_like/models/map/map.dart';
-import 'package:flutter_rogue_like/models/map/map-tile.dart';
 import 'package:flutter_rogue_like/models/entities/entity.dart';
-import 'package:flutter_rogue_like/models/map/coordinate.dart';
 import 'package:flutter_rogue_like/models/game/game.dart';
+import 'package:flutter_rogue_like/models/map/coordinate.dart';
+import 'package:flutter_rogue_like/models/map/map-tile.dart';
+import 'package:flutter_rogue_like/models/logging/log.dart';
 
 void main() => runApp(MyApp());
 
@@ -183,21 +183,31 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget _buildListView() {
     return Flexible(
       child: ListView(
-        children: <Widget>[
-          Container(
-              decoration: BoxDecoration(border: Border.all()),
-              child: Container(
-                color: Colors.blue,
-                padding: EdgeInsets.all(2.0),
-                child: ListTile(
-                  title: Text('title'),
-                  subtitle: Text('Subtitle'),
-                  contentPadding: EdgeInsets.all(0.0),
-                  dense: true,
-                ),
-              )),
-        ],
+        children: _buildListTiles(),
       ),
     );
   }
+
+  List<Widget> _buildListTiles() {
+    List<Widget> _listTiles = new List<Widget>();
+    game.logs.forEach((Log log) {
+      _listTiles.add(
+        Container(
+          color: log.color,
+          padding: EdgeInsets.all(2.0),
+          margin: EdgeInsets.all(2.0),
+          child: ListTile(
+            leading: Icon(log.iconData),
+            title: Text(log.title),
+            subtitle: Text(log.subTitle),
+          ),
+        ),
+      );
+    });
+    return _listTiles;
+  }
 }
+
+// game.getMapTiles().map<Widget>((MapTile tile) {
+//    return _buildGridTile(tile);
+// }).toList()),

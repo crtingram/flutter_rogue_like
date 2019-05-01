@@ -12,10 +12,6 @@ class MapTile {
   Color iconColor = Colors.black;
   MapTileContents _contents = new MapTileContents();
 
-  MapTileContents get contents {
-    return _contents;
-  }
-
   MapTile(this.coordinate, this.mapTileType, this.color, [this.iconData]);
 
   MapTile.grassTile(Coordinate coordinate)
@@ -31,7 +27,16 @@ class MapTile {
   MapTile.rockTile(Coordinate coordinate)
       : this(coordinate, MapTileType.rock, Colors.grey, Icons.change_history);
 
+  MapTileContents get contents {
+    return _contents;
+  }
+
   void addEntity(Entity e) {
     _contents.addEntity(e);
   }
+
+  void removeEntity(Entity e) {
+    _contents.removeEntity(e);
+  }
+
 }

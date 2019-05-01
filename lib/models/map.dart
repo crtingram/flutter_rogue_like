@@ -11,12 +11,28 @@ class Map {
   List<MapTile> _mapTiles;
 
   List<MapTile> get mapTiles => _mapTiles;
-  Player player;
+  Player _player;
 
   Map() {
     _mapTiles = MapData().getMapData(width, height);
-    player = new Player(0, 0);
-    addEntity(player);
+    _player = new Player(0, 0);
+    addEntity(_player);
+  }
+
+  bool movePlayer(Coordinate newCoordinate) {
+    return moveEntity(_player, newCoordinate);
+  }
+
+  bool moveEntity(Entity e, Coordinate nc) {
+    Coordinate newCoordinate = e.coordinate + nc;
+    if (isValidCoordinate(newCoordinate) &&
+        !isImpassibleTerrain(newCoordinate)) {
+      removeEntity(e);
+      e.coordinate = newCoordinate;
+      addEntity(e);
+      return true;
+    }
+    return false;
   }
 
   // Just for testing.

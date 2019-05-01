@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rogue_like/models/map.dart';
 import 'package:flutter_rogue_like/models/map-tile.dart';
 import 'package:flutter_rogue_like/models/entities/entity.dart';
+import 'package:flutter_rogue_like/models/coordinate.dart';
 
 void main() => runApp(MyApp());
 
@@ -118,25 +119,44 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Row(
       children: <Widget>[
         RaisedButton(
-          onPressed: () => print('test'),
+          onPressed: (() {
+            setState(() {
+              map.movePlayer(Coordinate.west());
+            });
+          }),
           child: Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
         ),
         RaisedButton(
+          onPressed: (() {
+            setState(() {
+              map.movePlayer(Coordinate.north());
+            });
+          }),
           child: Icon(
             Icons.arrow_upward,
             color: Colors.black,
           ),
         ),
         RaisedButton(
+          onPressed: (() {
+            setState(() {
+              map.movePlayer(Coordinate.south());
+            });
+          }),
           child: Icon(
             Icons.arrow_downward,
             color: Colors.black,
           ),
         ),
         RaisedButton(
+          onPressed: (() {
+            setState(() {
+              map.movePlayer(Coordinate.east());
+            });
+          }),
           child: Icon(
             Icons.arrow_forward,
             color: Colors.black,

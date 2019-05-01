@@ -81,8 +81,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     double defaultIconSize = 40.0;
     num contentsLength = mapTile.contents.length;
 
+    num tileIcon = mapTile.iconData != null ? 1 : 0;
+
     double iconSize = contentsLength > 0
-        ? defaultIconSize / (contentsLength)
+        ? defaultIconSize / (contentsLength + tileIcon)
         : defaultIconSize;
 
     if (mapTile.iconData != null) {

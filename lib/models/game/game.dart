@@ -34,6 +34,7 @@ class Game {
     return _map.mapTiles;
   }
 
+  // For testing only
   void updateMapData() {
     _map.updateMapData();
     _map.addEntity(_player);

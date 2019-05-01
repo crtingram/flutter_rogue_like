@@ -9,7 +9,8 @@ class Logger {
     if (start < 0) {
       start = 0;
     }
-    return _log.sublist(start, _log.length).reversed.toList();
+    _log = _log.sublist(start, _log.length).reversed.toList();
+    return _log;
   }
 
   Logger() {

@@ -14,9 +14,20 @@ class Map {
 
   Player player;
 
-  Map()
-      : _mapTiles = MapData().getMapData(width, height),
-        player = new Player(0, 0);
+  Map() {
+    _mapTiles = MapData().getMapData(width, height);
+    player = new Player(0, 0);
+    addEntity(player);
+  }
+
+  void addEntity(Entity e) {
+    this[e.coordinate].addEntity(e);
+  }
+
+  // Just for testing.
+  void updateMapData() {
+    _mapTiles = MapData().getMapData(width, height);
+  }
 
   bool isValidCoordinate(Coordinate c) {
     return c.x >= 0 && c.x < width && c.y >= 0 && c.y < height;

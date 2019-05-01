@@ -9,6 +9,10 @@ class MapTileContents {
     return _contents;
   }
 
+  num get length {
+    return _contents.length;
+  }
+
   void addEntity(Entity e) {
     _contents.add(e);
   }

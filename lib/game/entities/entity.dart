@@ -1,5 +1,5 @@
-import 'package:flutter_rogue_like/models/map/coordinate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rogue_like/game/map/coordinate.dart';
 
 class Entity {
   Coordinate coordinate;

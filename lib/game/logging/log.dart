@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rogue_like/models/entities/entity.dart';
-import 'package:flutter_rogue_like/models/util/color-util.dart';
+import 'package:flutter_rogue_like/game/entities/entity.dart';
+import 'package:flutter_rogue_like/game/util/color-util.dart';
 
 class Log {
   Color color;

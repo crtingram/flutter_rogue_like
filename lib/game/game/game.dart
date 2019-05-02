@@ -1,9 +1,9 @@
-import 'package:flutter_rogue_like/models/map/map.dart';
-import 'package:flutter_rogue_like/models/entities/player.dart';
-import 'package:flutter_rogue_like/models/map/coordinate.dart';
-import 'package:flutter_rogue_like/models/map/map-tile.dart';
-import 'package:flutter_rogue_like/models/logging/logger.dart';
-import 'package:flutter_rogue_like/models/logging/log.dart';
+import 'package:flutter_rogue_like/game/map/map.dart';
+import 'package:flutter_rogue_like/game/entities/player.dart';
+import 'package:flutter_rogue_like/game/map/coordinate.dart';
+import 'package:flutter_rogue_like/game/map/map-tile.dart';
+import 'package:flutter_rogue_like/game/logging/logger.dart';
+import 'package:flutter_rogue_like/game/logging/log.dart';
 
 class Game {
   Map _map;

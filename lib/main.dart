@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rogue_like/models/entities/entity.dart';
-import 'package:flutter_rogue_like/models/game/game.dart';
-import 'package:flutter_rogue_like/models/map/coordinate.dart';
-import 'package:flutter_rogue_like/models/map/map-tile.dart';
-import 'package:flutter_rogue_like/models/logging/log.dart';
+import 'package:flutter_rogue_like/game/entities/entity.dart';
+import 'package:flutter_rogue_like/game/game/game.dart';
+import 'package:flutter_rogue_like/game/map/coordinate.dart';
+import 'package:flutter_rogue_like/game/map/map-tile.dart';
+import 'package:flutter_rogue_like/game/logging/log.dart';
 
 void main() => runApp(MyApp());
 

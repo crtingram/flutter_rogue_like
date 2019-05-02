@@ -1,8 +1,8 @@
-import 'package:flutter_rogue_like/models/entities/entity.dart';
-import 'package:flutter_rogue_like/models/map/coordinate.dart';
-import 'package:flutter_rogue_like/models/map/map-data.dart';
-import 'package:flutter_rogue_like/models/map/map-tile-type.dart';
-import 'package:flutter_rogue_like/models/map/map-tile.dart';
+import 'package:flutter_rogue_like/game/entities/entity.dart';
+import 'package:flutter_rogue_like/game/map/coordinate.dart';
+import 'package:flutter_rogue_like/game/map/map-data.dart';
+import 'package:flutter_rogue_like/game/map/map-tile-type.dart';
+import 'package:flutter_rogue_like/game/map/map-tile.dart';
 
 class Map {
   static final num width = 9;

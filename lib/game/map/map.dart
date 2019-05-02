@@ -7,6 +7,7 @@ import 'package:flutter_rogue_like/game/map/map-tile.dart';
 class Map {
   static final num width = 9;
   static final num height = 10;
+
   List<MapTile> _mapTiles;
 
   List<MapTile> get mapTiles => _mapTiles;
@@ -36,8 +37,25 @@ class Map {
     this[e.coordinate].addEntity(e);
   }
 
+  void addEntities(List<Entity> e) {
+    e.forEach((Entity entity) {
+      this[entity.coordinate].addEntity(entity);
+    });
+  }
+
   void removeEntity(Entity e) {
     this[e.coordinate].removeEntity(e);
+  }
+
+  List<Coordinate> getValidCoordinates() {
+    List<Coordinate> validCoordinates = new List<Coordinate>();
+    _mapTiles.forEach((MapTile mapTile) {
+      Coordinate potentialValid = mapTile.coordinate;
+      if (isValidCoordinate(potentialValid)) {
+        validCoordinates.add(potentialValid);
+      }
+    });
+    return validCoordinates;
   }
 
   bool isValidCoordinate(Coordinate c) {

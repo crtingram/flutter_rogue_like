@@ -32,15 +32,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
     return SafeArea(
         child: Scaffold(
-          body: Column(
-            children: <Widget>[
-              _buildHpBar(),
-              _buildGridView(screenWidth),
-              _buildButtonRow(),
-              _buildListView()
-            ],
-          ),
-        ));
+      body: Column(
+        children: <Widget>[
+          _buildHpBar(),
+          _buildGridView(screenWidth),
+          _buildButtonRow(),
+          _buildListView()
+        ],
+      ),
+    ));
   }
 
   Widget _buildHpBar() {
@@ -192,23 +192,25 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   List<Widget> _buildListTiles() {
     List<Widget> _listTiles = new List<Widget>();
     game.logs.forEach((Log log) {
-      _listTiles.add(
-        Container(
-          color: log.color,
-          padding: EdgeInsets.all(2.0),
-          margin: EdgeInsets.all(2.0),
-          child: ListTile(
-            leading: Icon(log.iconData),
-            title: Text(log.title),
-            subtitle: Text(log.subTitle),
-          ),
+      _listTiles.add(Container(
+        padding: EdgeInsets.all(8),
+        margin: EdgeInsets.all(8),
+        color: log.color,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Icon(
+              log.iconData,
+              color: log.iconColor,
+            ),
+            Text(
+              log.title,
+            ),
+            Text(log.subTitle),
+          ],
         ),
-      );
+      ));
     });
     return _listTiles;
   }
 }
-
-// game.getMapTiles().map<Widget>((MapTile tile) {
-//    return _buildGridTile(tile);
-// }).toList()),

@@ -47,6 +47,12 @@ class Map {
     this[e.coordinate].removeEntity(e);
   }
 
+  void removeEntities(List<Entity> e) {
+    e.forEach((Entity entity) {
+      this[entity.coordinate].removeEntity(entity);
+    });
+  }
+
   List<Coordinate> getValidCoordinates() {
     List<Coordinate> validCoordinates = new List<Coordinate>();
     _mapTiles.forEach((MapTile mapTile) {

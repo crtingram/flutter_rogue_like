@@ -5,6 +5,7 @@ import 'package:flutter_rogue_like/game/map/coordinate.dart';
 import 'package:flutter_rogue_like/game/map/map-tile.dart';
 import 'package:flutter_rogue_like/game/logging/logger.dart';
 import 'package:flutter_rogue_like/game/logging/log.dart';
+import 'package:flutter_rogue_like/game/entities/enemy/enemy.dart';
 
 class Game {
   Map _map;
@@ -23,14 +24,10 @@ class Game {
   Game() {
     _map = new Map();
     _player = new Player(0, 0);
-    _map.addEntity(_player);
-
     _enemyManager = new EnemyManager();
-    _enemyManager.generateEnemies(1, _map.getValidCoordinates());
-
-    _map.addEntities(_enemyManager.getEnemies(1));
-
     _logger = new Logger();
+
+    updateMapData();
   }
 
   bool movePlayer(Coordinate c) {
@@ -39,6 +36,17 @@ class Game {
       _logger.logMovement(_player);
     }
     return moved;
+  }
+
+  void removeDeadEnemies() {
+    List<Enemy> toRemove = new List<Enemy>();
+    _enemyManager.getEnemies(1).forEach((Enemy e) {
+      if (e.isDead()) {
+        toRemove.add(e);
+      }
+    });
+    _enemyManager.removeEnemies(1, toRemove);
+    _map.removeEntities(toRemove);
   }
 
   List<MapTile> getMapTiles() {

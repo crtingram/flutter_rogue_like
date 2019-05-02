@@ -1,5 +1,5 @@
-import 'package:flutter_rogue_like/models/logging/log.dart';
-import 'package:flutter_rogue_like/models/entities/entity.dart';
+import 'package:flutter_rogue_like/game/logging/log.dart';
+import 'package:flutter_rogue_like/game/entities/entity.dart';
 
 class Logger {
   List<Log> _log;
@@ -9,8 +9,8 @@ class Logger {
     if (start < 0) {
       start = 0;
     }
-    _log = _log.sublist(start, _log.length).reversed.toList();
-    return _log;
+    _log = _log.sublist(start, _log.length);
+    return _log.reversed.toList();
   }
 
   Logger() {

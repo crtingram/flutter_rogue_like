@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rogue_like/game/entities/entity.dart';
-import 'package:flutter_rogue_like/game/game/game.dart';
+import 'package:flutter_rogue_like/game/game.dart';
 import 'package:flutter_rogue_like/game/map/coordinate.dart';
 import 'package:flutter_rogue_like/game/map/map-tile.dart';
 import 'package:flutter_rogue_like/game/logging/log.dart';
@@ -8,7 +8,6 @@ import 'package:flutter_rogue_like/game/logging/log.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,15 +32,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
     return SafeArea(
         child: Scaffold(
-      body: Column(
-        children: <Widget>[
-          _buildHpBar(),
-          _buildGridView(screenWidth),
-          _buildButtonRow(),
-          _buildListView()
-        ],
-      ),
-    ));
+          body: Column(
+            children: <Widget>[
+              _buildHpBar(),
+              _buildGridView(screenWidth),
+              _buildButtonRow(),
+              _buildListView()
+            ],
+          ),
+        ));
   }
 
   Widget _buildHpBar() {

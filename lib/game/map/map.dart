@@ -57,7 +57,8 @@ class Map {
     List<Coordinate> validCoordinates = new List<Coordinate>();
     _mapTiles.forEach((MapTile mapTile) {
       Coordinate potentialValid = mapTile.coordinate;
-      if (isValidCoordinate(potentialValid)) {
+      if (isValidCoordinate(potentialValid) &&
+          !isImpassibleTerrain(potentialValid)) {
         validCoordinates.add(potentialValid);
       }
     });

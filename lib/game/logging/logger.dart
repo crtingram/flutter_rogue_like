@@ -5,7 +5,7 @@ class Logger {
   List<Log> _log;
 
   List<Log> get log {
-    num start = _log.length - 10;
+    num start = _log.length - 20;
     if (start < 0) {
       start = 0;
     }

@@ -13,7 +13,7 @@ class Game {
   Player _player;
   EnemyManager _enemyManager;
   Logger _logger;
-  MovementManager _movementManager = new MovementManager();
+  MovementManager _movementManager;
 
   Map get map => _map;
 
@@ -28,6 +28,7 @@ class Game {
     _player = new Player(0, 0);
     _enemyManager = new EnemyManager();
     _logger = new Logger();
+    _movementManager = new MovementManager();
 
     updateMapData();
   }

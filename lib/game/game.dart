@@ -1,5 +1,6 @@
 import 'package:flutter_rogue_like/game/map/map.dart';
 import 'package:flutter_rogue_like/game/entity_manager/enemy-manager.dart';
+import 'package:flutter_rogue_like/game/entity_manager/movement-manager.dart';
 import 'package:flutter_rogue_like/game/entities/player.dart';
 import 'package:flutter_rogue_like/game/map/coordinate.dart';
 import 'package:flutter_rogue_like/game/map/map-tile.dart';
@@ -12,6 +13,7 @@ class Game {
   Player _player;
   EnemyManager _enemyManager;
   Logger _logger;
+  MovementManager _movementManager = new MovementManager();
 
   Map get map => _map;
 
@@ -34,6 +36,8 @@ class Game {
     bool moved = _map.moveEntity(_player, c);
     if (moved) {
       _logger.logMovement(_player);
+      // only going here for now.
+      _movementManager.moveEntities(_map, enemyManager.getEnemies(1));
     }
     return moved;
   }
